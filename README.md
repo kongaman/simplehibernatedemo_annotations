@@ -26,6 +26,26 @@ Annotations being covered later in the Course.
 You have to set auto-increment on the id column for this to work, if you use the database created up there use:<br>
 `ALTER TABLE book MODIFY COLUMN id INT auto_increment;`<br>
 
+### Database changes via Hibernate
+Hibernate can create, update or validate the database schema for you.<br>
+First thing for this to work chang the "dialect" line according to the version of the database you are using. For mysql 4 and lower you can leave the 
+>`<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>`
+
+line as it is. For Verion 5 and higher use
+>`<property name="hibernate.dialect">org.hibernate.dialect.MySQL` **5**`Dialect</property>`
+
+Now you can enter a new line in the .cfg-file like
+
+>`<property name="hibernate.hbm2ddl.auto">create</property>`
+
+So the list of possible values for the property are,
+
+* `validate`: validate the schema, makes no changes to the database.
+* `update`: update the schema.
+* `create`: creates the schema, destroying previous data.
+* `create-drop`: drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped.
+
+
 ### Problem with Timezone
 Going strictly by the course i got the following errormessage:<br>
 >`ERROR: The server time zone value 'Mitteleuropäische Zeit' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.`<br>
