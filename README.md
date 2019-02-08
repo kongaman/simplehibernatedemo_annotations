@@ -21,6 +21,10 @@ Change the Hibernate-Config-File (src/main/resoures/hibernate.cfg.xml) according
 ## Hibernate
 Mapping is shown using annotations.
 Annotations being covered later in the Course.
+<br><br>
+`@GeneratedValue(strategy=GenerationType.IDENTITY)`<br>
+You have to set auto-increment on the id column for this to work, if you use the database created up there use:<br>
+`ALTER TABLE book MODIFY COLUMN id INT auto_increment;`<br>
 
 ### Problem with Timezone
 Going strictly by the course i got the following errormessage:<br>

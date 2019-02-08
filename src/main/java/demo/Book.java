@@ -1,11 +1,25 @@
 package demo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="book") // optional only needed if Classname differs from tablename --> not needed here
 public class Book {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // id column in db has to be marked with "auto-increment" for this to work
+	@Column(name="id") //optional only needed if fieldname differs from columnname --> not needed here
 	int id;
-	String bookName;
-	String bookAuthor;
 	
+	@Column(name="book_name")
+	String bookName;
+	@Column(name="book_author")
+	String bookAuthor;
 	
 	
 	public Book(String bookName, String bookAuthor) {
